@@ -1,0 +1,1 @@
+export const GLYPHS = '0123456789±!@#$%^&*()_+ABCDEFGHIJKLMNOPQRSTUVWXYZ'

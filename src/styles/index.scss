@@ -1,0 +1,27 @@
+@import '_reset';
+@import '_variables';
+@import '_utils';
+
+:root {
+  font-family: 'Roboto Mono', monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+html {
+  width: 100%;
+  height: -webkit-fill-available;
+}
+
+body {
+  min-height: -webkit-fill-available;
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
