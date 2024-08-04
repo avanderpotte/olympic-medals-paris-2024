@@ -1,4 +1,4 @@
-# Olympics Medals Paris 2024
+# Olympic Medals Paris 2024
 
 ## Setup
 

@@ -17,9 +17,8 @@
     </p>
     <p>
       Made with &#x2665; by
-      <a href="https://avdp.xyz" target="_blank" rel="noopener noreferer"
-        >Adrien&nbsp;Vanderpotte</a
-      >
+      <a href="https://avdp.xyz" target="_blank" rel="noopener noreferer">Adrien&nbsp;Vanderpotte</a
+      >.
     </p>
   </div>
 </template>
