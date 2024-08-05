@@ -25,9 +25,10 @@ export default class WebglApp {
     gsap.ticker.add(this.onTick.bind(this))
     window.addEventListener('resize', this.onResize.bind(this))
 
-    gsap.delayedCall(5, () => {
+    gsap.delayedCall(5, async () => {
+      const promises = this.continents.map((c) => c.show())
+      await Promise.all(promises)
       this.IS_READY = true
-      this.continents.forEach((c) => c.show())
     })
   }
 

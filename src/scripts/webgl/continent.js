@@ -20,9 +20,45 @@ export default class Continent extends THREE.Group {
       roughness: 0,
     })
     this.mesh = new THREE.Mesh(this.geometry, this.material)
-    this.mesh.rotation.x = Math.PI * gsap.utils.random(-0.5, 0.5, 0.1)
-    this.mesh.rotation.y = Math.PI * gsap.utils.random(-0.5, 0.5, 0.1)
-    this.mesh.position.z = this.index % 2 ? 10 : -10
+    // this.mesh.rotation.x = Math.PI * gsap.utils.random(-0.5, 0.5, 0.1)
+    // this.mesh.rotation.y = Math.PI * gsap.utils.random(-0.5, 0.5, 0.1)
+
+    this.tweenTarget = {
+      position: new THREE.Vector3(),
+      rotation: new THREE.Vector3(),
+    }
+
+    if (this.index === 0) {
+      this.tweenTarget.rotation.x = -Math.PI * 0.05
+      this.tweenTarget.position.z = -0.5
+
+      this.mesh.rotation.x = Math.PI * 0.2
+      this.mesh.rotation.y = -Math.PI * 0.2
+    } else if (this.index === 1) {
+      this.tweenTarget.rotation.x = -Math.PI * 0.1
+      this.tweenTarget.rotation.y = Math.PI * 0.1
+      this.tweenTarget.position.z = -3
+
+      this.mesh.rotation.x = -Math.PI * 0.2
+      this.mesh.rotation.y = Math.PI * 0.1
+    } else if (this.index === 2) {
+      this.tweenTarget.rotation.y = -Math.PI * 0.1
+      this.tweenTarget.position.z = -2
+
+      this.mesh.rotation.y = -Math.PI * 0.2
+    } else if (this.index === 3) {
+      this.tweenTarget.rotation.x = -Math.PI * 0.05
+      this.tweenTarget.rotation.y = Math.PI * 0.05
+
+      this.mesh.rotation.x = -Math.PI * 0.1
+      this.mesh.rotation.y = Math.PI * 0.2
+    } else if (this.index === 4) {
+      this.tweenTarget.rotation.x = -Math.PI * 0.05
+      this.tweenTarget.rotation.y = -Math.PI * 0.1
+
+      this.mesh.rotation.x = -Math.PI * 0.2
+      this.mesh.rotation.y = -Math.PI * 0.2
+    }
 
     this.mesh.castShadow = true
     this.mesh.scale.set(0, 0, 0)
@@ -41,7 +77,7 @@ export default class Continent extends THREE.Group {
 
   show() {
     this.tl = gsap.timeline({
-      delay: gsap.utils.random(0, 0.2, 0.05),
+      delay: gsap.utils.random(0, 0.3, 0.05),
     })
 
     this.tl.to(
@@ -59,7 +95,9 @@ export default class Continent extends THREE.Group {
     this.tl.to(
       this.mesh.position,
       {
-        z: 0,
+        x: this.tweenTarget.position.x,
+        y: this.tweenTarget.position.y,
+        z: this.tweenTarget.position.z,
         duration: 1,
         ease: 'power2.out',
       },
@@ -68,13 +106,15 @@ export default class Continent extends THREE.Group {
     this.tl.to(
       this.mesh.rotation,
       {
-        x: 0,
-        y: 0,
+        x: this.tweenTarget.rotation.x,
+        y: this.tweenTarget.rotation.y,
+        z: this.tweenTarget.rotation.z,
         duration: 1,
         ease: 'elastic.out(0.8, 0.8)',
       },
       0,
     )
+    return this.tl
   }
 
   enter() {
